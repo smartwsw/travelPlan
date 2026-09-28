@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>连云港国庆自驾 · 执行清单</title>
+<meta name="description" content="2026 国庆 南京出发 连云港 5 天 4 晚 单人纯电自驾执行清单">
+<style>
+:root{
+  --bg:#f3f6f8; --card:#ffffff; --ink:#16232d; --ink2:#41535f; --muted:#7c8b95;
+  --line:#e3eaee; --line2:#eef3f6;
+  --acc:#1a6f8f; --acc-d:#0d3b52; --acc-soft:#e9f4f8; --acc-line:#bcdde8;
+  --ok:#2f7d54; --ok-soft:#e9f5ef;
+  --warn:#a9700f; --warn-soft:#fdf3e2;
+  --bad:#b5302b; --bad-soft:#fdeceb;
+  --r:12px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:15px;line-height:1.72;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 16px 80px;}
+
+/* ---------- topbar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);
+  backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);
+}
+.topbar-in{max-width:940px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.brand{font-weight:700;font-size:13.5px;color:var(--acc-d);letter-spacing:.02em;white-space:nowrap;}
+.brand small{font-weight:500;color:var(--muted);margin-left:6px;font-size:12px;}
+.prog{flex:1;min-width:170px;display:flex;align-items:center;gap:9px;}
+.progbar{flex:1;height:7px;background:#dfe8ec;border-radius:99px;overflow:hidden;}
+.progbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2b8cae,#1a6f8f);border-radius:99px;transition:width .32s cubic-bezier(.4,0,.2,1);}
+.progtx{font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;}
+.tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.seg{display:flex;background:#e8eef2;border-radius:8px;padding:2px;}
+.seg button{
+  border:0;background:none;font:inherit;font-size:12.5px;color:var(--ink2);
+  padding:4px 11px;border-radius:6px;cursor:pointer;white-space:nowrap;
+}
+.seg button.on{background:#fff;color:var(--acc-d);font-weight:600;box-shadow:0 1px 3px rgba(13,59,82,.14);}
+.tbtn{
+  border:1px solid var(--line);background:#fff;font:inherit;font-size:12.5px;color:var(--ink2);
+  padding:5px 11px;border-radius:8px;cursor:pointer;white-space:nowrap;transition:.15s;
+}
+.tbtn:hover{border-color:var(--acc-line);color:var(--acc-d);}
+.tbtn.danger:hover{border-color:#e6b5b2;color:var(--bad);background:var(--bad-soft);}
+
+/* ---------- hero ---------- */
+.hero{padding:34px 0 22px;}
+.hero .kicker{
+  display:inline-block;font-size:12px;font-weight:600;color:var(--acc);
+  background:var(--acc-soft);border:1px solid var(--acc-line);
+  padding:3px 10px;border-radius:99px;letter-spacing:.02em;
+}
+.hero h1{font-size:30px;line-height:1.3;margin:13px 0 10px;letter-spacing:-.01em;}
+.hero h1 span{color:var(--acc);}
+.hero p{margin:0;color:var(--ink2);font-size:14.5px;max-width:660px;}
+.facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+.facts span{
+  font-size:12.5px;color:var(--ink2);background:#fff;border:1px solid var(--line);
+  padding:4px 11px;border-radius:99px;
+}
+.facts span.hi{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600;}
+
+/* ---------- group ---------- */
+.group{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden;}
+.ghead{display:flex;align-items:center;gap:12px;width:100%;border:0;background:none;font:inherit;
+  text-align:left;padding:15px 18px;cursor:pointer;transition:background .15s;}
+.ghead:hover{background:#fafcfd;}
+.ghead:focus-visible{outline:2px solid var(--acc);outline-offset:-2px;}
+.gnum{
+  flex:none;width:26px;height:26px;border-radius:8px;background:var(--acc-soft);color:var(--acc);
+  font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.gtitle{flex:1;min-width:0;}
+.gtitle b{display:block;font-size:15.5px;font-weight:650;letter-spacing:-.005em;}
+.gtitle em{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.55;}
+.gcount{font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600;white-space:nowrap;}
+.gcount b{color:var(--acc-d);}
+.group.all-done .gcount b{color:var(--ok);}
+.group.all-done .gnum{background:var(--ok-soft);color:var(--ok);}
+.chev{flex:none;width:8px;height:8px;border-right:1.8px solid var(--muted);border-bottom:1.8px solid var(--muted);
+  transform:rotate(45deg);margin-right:4px;transition:transform .2s;margin-top:-4px;}
+.group.collapsed .chev{transform:rotate(-45deg);margin-top:0;}
+.group.collapsed .gbody{display:none;}
+.gbody{padding:0 18px 18px;border-top:1px solid var(--line2);}
+.gnote{padding:13px 0 4px;font-size:13.5px;color:var(--ink2);}
+.gnote b{color:var(--ink);}
+
+/* ---------- checklist ---------- */
+ul.list{list-style:none;margin:14px 0 0;padding:0;}
+ul.list > li{margin-bottom:1px;}
+.ck{display:flex;gap:0;}
+.ck label{display:flex;gap:11px;align-items:flex-start;padding:8px 10px 8px 8px;border-radius:9px;
+  cursor:pointer;width:100%;transition:background .14s;}
+.ck label:hover{background:#f7fafb;}
+.ck input{position:absolute;opacity:0;width:0;height:0;pointer-events:none;}
+.ck .box{
+  flex:none;width:19px;height:19px;border:1.8px solid #c3d0d9;border-radius:5.5px;
+  margin-top:2px;position:relative;transition:.15s;background:#fff;
+}
+.ck label:hover .box{border-color:var(--acc-line);}
+.ck input:checked + .box{background:var(--acc);border-color:var(--acc);}
+.ck input:checked + .box::after{
+  content:"";position:absolute;left:5.6px;top:1.4px;width:4.2px;height:9.4px;
+  border:solid #fff;border-width:0 2.2px 2.2px 0;transform:rotate(43deg);
+}
+.ck input:focus-visible + .box{box-shadow:0 0 0 3px rgba(26,111,143,.2);}
+.tx{flex:1;min-width:0;font-size:14px;line-height:1.66;}
+.tx b{font-weight:600;color:var(--ink);}
+.tx em{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.62;}
+.ck input:checked ~ .tx{color:var(--muted);}
+.ck input:checked ~ .tx b{color:var(--muted);font-weight:500;text-decoration:line-through;text-decoration-color:#c3d0d9;}
+.tx .kbd{
+  display:inline-block;font-size:11.5px;font-weight:600;padding:1px 6px;border-radius:5px;
+  background:var(--acc-soft);color:var(--acc);margin-right:2px;
+}
+.tx .kbd.warn{background:var(--warn-soft);color:var(--warn);}
+.tx .kbd.bad{background:var(--bad-soft);color:var(--bad);}
+.tx .kbd.ok{background:var(--ok-soft);color:var(--ok);}
+
+body.f-todo .ck.done{display:none;}
+body.f-done .ck:not(.done){display:none;}
+.group.g-hide{display:none;}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px;}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top;line-height:1.62;}
+th{background:#f7fafb;font-weight:650;font-size:12.5px;color:var(--ink2);white-space:nowrap;
+  border-bottom:1px solid var(--line);}
+tr:last-child td{border-bottom:0;}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;}
+tr.hl td{background:var(--acc-soft);}
+tr.hl td:first-child{box-shadow:inset 3px 0 0 var(--acc);}
+tr.ok td{background:var(--ok-soft);}
+tr.ok td:first-child{box-shadow:inset 3px 0 0 var(--ok);}
+tr.warn td{background:var(--warn-soft);}
+tr.warn td:first-child{box-shadow:inset 3px 0 0 var(--warn);}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:1.5px 7px;border-radius:99px;
+  background:#eef3f6;color:var(--ink2);white-space:nowrap;}
+.tag.acc{background:var(--acc-soft);color:var(--acc);}
+.tag.ok{background:var(--ok-soft);color:var(--ok);}
+.tag.warn{background:var(--warn-soft);color:var(--warn);}
+.tag.bad{background:var(--bad-soft);color:var(--bad);}
+
+/* ---------- callouts ---------- */
+.note{border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.7;margin-top:14px;}
+.note b{font-weight:650;}
+.note.tip{background:var(--acc-soft);border-left:3px solid var(--acc);color:var(--acc-d);}
+.note.warn{background:var(--warn-soft);border-left:3px solid var(--warn);color:#6f4a09;}
+.note.bad{background:var(--bad-soft);border-left:3px solid var(--bad);color:#7d211d;}
+.note.ok{background:var(--ok-soft);border-left:3px solid var(--ok);color:#1d5738;}
+
+/* ---------- timeline ---------- */
+.tl{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:2px;}
+.tl span{font-size:12.5px;background:#f5f9fa;border:1px solid var(--line);color:var(--ink2);
+  padding:3px 10px;border-radius:7px;font-variant-numeric:tabular-nums;}
+.tl span b{color:var(--acc-d);font-weight:650;}
+.tl span.key{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600;}
+.tl span.key b{color:#fff;}
+
+/* ---------- day head ---------- */
+.dayh{margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);}
+.dayh:first-child{margin-top:6px;padding-top:0;border-top:0;}
+.dayh b{font-size:15px;display:inline-block;}
+.dayh .n{display:inline-block;background:var(--acc-d);color:#fff;font-size:12px;font-weight:700;
+  padding:1.5px 8px;border-radius:6px;margin-right:8px;vertical-align:1px;}
+.dayh .km{font-size:12.5px;color:var(--muted);margin-left:8px;font-variant-numeric:tabular-nums;}
+
+/* ---------- misc ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+.col{border:1px solid var(--line);border-radius:10px;padding:13px 15px;background:#fcfdfe;}
+.col h4{margin:0 0 9px;font-size:13.5px;font-weight:650;}
+.col.yes h4{color:var(--ok);}
+.col.no h4{color:var(--bad);}
+.col ul{margin:0;padding-left:17px;font-size:13.5px;color:var(--ink2);line-height:1.85;}
+.col ul li{margin-bottom:3px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.chips span{font-size:12.5px;padding:3px 10px;border-radius:99px;background:#f5f9fa;border:1px solid var(--line);color:var(--ink2);}
+.chips span.hot{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600;}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px;}
+.kpi div{background:#fcfdfe;border:1px solid var(--line);border-radius:10px;padding:11px 13px;}
+.kpi span{display:block;font-size:12.5px;color:var(--muted);}
+.kpi b{display:block;font-size:16px;font-variant-numeric:tabular-nums;margin-top:2px;color:var(--acc-d);}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding:13px 15px;
+  background:var(--acc-d);color:#fff;border-radius:10px;}
+.total span{font-size:13.5px;}
+.total b{font-size:19px;font-variant-numeric:tabular-nums;}
+svg{display:block;width:100%;height:auto;}
+footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);line-height:1.9;}
+
+@media(max-width:640px){
+  .hero h1{font-size:24px;}
+  .split,.kpi{grid-template-columns:1fr;}
+  .kpi{grid-template-columns:1fr 1fr;}
+  th,td{padding:8px;font-size:13px;}
+  .ghead{padding:13px 14px;}
+  .gbody{padding:0 14px 14px;}
+  .brand small{display:none;}
+}
+@media print{
+  body{background:#fff;font-size:11.5pt;}
+  .topbar{display:none;}
+  .group{border-color:#ccd7de;break-inside:auto;}
+  .group.collapsed .gbody{display:block !important;}
+  .ghead{cursor:default;}
+  .chev{display:none;}
+  .ck label{padding:3px 0;}
+  .note,tr,table{break-inside:avoid;}
+  .wrap{padding-bottom:0;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">连云港自驾清单<small>10/1 – 10/5</small></div>
+    <div class="prog">
+      <div class="progbar"><i id="pbar"></i></div>
+      <span class="progtx" id="ptx">0 / 0</span>
+    </div>
+    <div class="tools">
+      <div class="seg" id="seg">
+        <button data-f="all" class="on">全部</button>
+        <button data-f="todo">未完成</button>
+        <button data-f="done">已完成</button>
+      </div>
+      <button class="tbtn" id="btnToggle">全部折叠</button>
+      <button class="tbtn danger" id="btnReset">重置</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="kicker">2026 国庆 · 单人自驾 · 纯电 460km</span>
+    <h1>南京 → 连云港<br><span>执行清单</span></h1>
+    <p>5 天 4 晚 · 4 晚都住苍梧（海州区）· 全程不换酒店。勾掉一项存一项，关掉网页也不会丢。</p>
+    <div class="facts">
+      <span class="hi">10/1 周四 – 10/5 周一</span>
+      <span>单程 321 km</span>
+      <span>全程约 880 km</span>
+      <span>最长单段 321 km</span>
+      <span>花果山 / 连岛须预约</span>
+      <span>10/1 起连续晴好</span>
+    </div>
+  </div>
+
+  <!-- ============ 1 今天就要办 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">1</span>
+      <span class="gtitle"><b>今天就要办</b><em>9/28 周一 · 离 10/1 只剩 3 天，这四件不办完，后面行程排不动</em></span>
+      <span class="gcount"><b>0</b>/4</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="t1"><span class="box"></span><span class="tx">
+          <b>约花果山门票</b>
+          <em>微信「连云港花果山风景区」公众号 → 服务 → 门票预约；或官方小程序。国庆实行实名预约 + 分时限流，<b style="color:#b5302b">约满即止</b>——不是“提前几天”，是“约完就没了”。选当天最早的可约时段，一人一证，当天刷本人身份证入园。咨询 0518-85723837。</em>
+        </span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="t2"><span class="box"></span><span class="tx">
+          <b>约连岛门票（含观光车）</b>
+          <em>微信「连云港连岛景区」公众号 或「玩转连岛」小程序。实行预约购票制，<b>购票时要选到达时段</b>。把观光车 20 元一起买上（当日无限次，两个沙滩离得远，不买走不动）。客服 400-828-2898。</em>
+        </span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="t3"><span class="box"></span><span class="tx">
+          <b>订 4 晚苍梧住宿（10/1–10/4 同一家）</b>
+          <em>三条硬要求：① 带免费停车场 ② 带充电车位 ③ 离苍梧路 / 万达 2 km 内。苍梧路一带（丽怡、如家 neo、格林东方、格菲等）多数标注有桩 + 免费停车。这里属商务区不是景区，供应量大、国庆涨幅小，300–550 元/晚是全市最稳的一档。</em>
+        </span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="t4"><span class="box"></span><span class="tx">
+          <b>给酒店前台打电话</b>
+          <em>说明开电车、要充电车位；确认停车是否免费；问清桩的功率（交流 7kW 和直流快充差别很大）；顺便说 D3 大概 20:30 才回店，让前台留个位。</em>
+        </span></label></li>
+      </ul>
+      <div class="note warn"><b>今年最大的变化：核心景区全部改成「实名预约 + 分时限流」。</b>不再是“到了就能进”。没约上，当天只能改行程——所以这三张票（花果山 / 连岛 / 住宿）是整趟行程的前置条件，不是细节。</div>
+    </div>
+  </section>
+
+  <!-- ============ 2 倒计时 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">2</span>
+      <span class="gtitle"><b>出发前 3 天倒计时</b><em>9/28 → 9/30，按天勾</em></span>
+      <span class="gcount"><b>0</b>/8</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <div class="dayh"><span class="n">9/28</span><b>周一 · 抢票日</b></div>
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="c1"><span class="box"></span><span class="tx"><b>约花果山 + 连岛门票</b><em>见上面第 1 组，这是最紧急的两张。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="c2"><span class="box"></span><span class="tx"><b>订死 4 晚苍梧住宿</b></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="c3"><span class="box"></span><span class="tx"><b>电话确认酒店充电车位</b><em>免费停车 + 桩功率。</em></span></label></li>
+      </ul>
+      <div class="dayh"><span class="n">9/29</span><b>周二</b></div>
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="c4"><span class="box"></span><span class="tx"><b>线上买海上云台山门票</b><em>携程 / 美团 / 同程，线上比现场便宜。注意选“门票含车”还是单门票——往返景交 40 元是必坐的，买错到现场还得补。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="c6"><span class="box"></span><span class="tx"><b>先查 10/2–10/3 潮汐</b><em>微信小程序「上货潮汐表」→ 江苏 · 连云港港。定准 10/2 西连岛赶海的到场时间。</em></span></label></li>
+      </ul>
+      <div class="dayh"><span class="n">9/30</span><b>周三 · 备车日</b></div>
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="c7"><span class="box"></span><span class="tx"><b>车辆检查</b><em>胎压、玻璃水、随车 16A 便携充电线、充电 App / 卡（国网 e 充电、星星充电）。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="c8"><span class="box"></span><span class="tx"><b>把电充满</b><em>321 km 一次跑完，中途至少要补一次，家充满是底线。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="c9"><span class="box"></span><span class="tx"><b>下载离线地图 + 再核一次天气路况</b><em>顺带看一眼景区公众号有没有临时闭园 / 交通管制通告。</em></span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 3 预约购票明细 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">3</span>
+      <span class="gtitle"><b>预约与购票明细</b><em>渠道一次抄全，免得来回找</em></span>
+      <span class="gcount"><b>0</b>/0</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <table>
+        <thead><tr><th>项目</th><th>渠道</th><th>时限</th><th>价格 / 备注</th></tr></thead>
+        <tbody>
+          <tr class="hl">
+            <td><b>花果山门票</b><br><span style="font-size:12.5px;color:#7c8b95">D4 · 10/4 早上</span></td>
+            <td>「连云港花果山风景区」公众号</td>
+            <td><span class="tag bad">越早越好</span><br>约满即止</td>
+            <td class="num">90（线上 85–88）<br>景交往返 50</td>
+          </tr>
+          <tr class="hl">
+            <td><b>连岛门票</b><br><span style="font-size:12.5px;color:#7c8b95">D2 · 10/2 全天</span></td>
+            <td>「玩转连岛」小程序<br>「连云港连岛景区」公众号</td>
+            <td><span class="tag bad">越早越好</span><br>须选到达时段</td>
+            <td class="num">50（线上 45）<br>+ 观光车 20</td>
+          </tr>
+          <tr class="hl">
+            <td><b>4 晚住宿（苍梧）</b><br><span style="font-size:12.5px;color:#7c8b95">10/1–10/4 连住</span></td>
+            <td>任意平台</td>
+            <td><span class="tag bad">今天就订</span></td>
+            <td class="num">300 – 550 / 晚</td>
+          </tr>
+          <tr>
+            <td><b>海上云台山门票</b><br><span style="font-size:12.5px;color:#7c8b95">D3 · 10/3 上午</span></td>
+            <td>携程 / 美团 / 同程</td>
+            <td><span class="tag">提前 1 天</span></td>
+            <td class="num">60 – 80<br>含往返景交 95 – 120</td>
+          </tr>
+          <tr class="ok">
+            <td><b>下面这些不用预约</b></td>
+            <td colspan="3">连云港老街 · 在海一方公园 · 羊山岛（线上点一下即可，无名额压力）· 海州古城 / 盐河巷 · 西连岛渔村 · 老障头 · 高公岛</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note tip"><b>买票容易漏的三件事：</b>① 花果山一人一证，要填姓名 + 身份证 + 手机号，别人的票用不了；② 连岛的观光车 20 元一起买，大沙湾到苏马湾 2.5 km，不买走不动；③ 海上云台山确认买的是“含车”还是“单门票”。</div>
+    </div>
+  </section>
+
+  <!-- ============ 4 逐日执行 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">4</span>
+      <span class="gtitle"><b>逐日执行 · D1 – D5</b><em>每天先看时间条，再逐项勾</em></span>
+      <span class="gcount"><b>0</b>/36</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+
+      <div class="dayh"><span class="n">D1</span><b>10/1 周四 · 南京 → 苍梧 · 老城夜逛</b><span class="km">321 km</span></div>
+      <div class="tl">
+        <span class="key"><b>6:00–6:30</b> 上高速</span>
+        <span>10:00–10:30 下「苍梧」互通</span>
+        <span>下午 休息不开车</span>
+        <span><b>17:00</b> 盐河巷 / 海州古城</span>
+      </div>
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="d1a"><span class="box"></span><span class="tx"><b>出发前把电充满</b></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d1b"><span class="box"></span><span class="tx"><b>导航设「苍梧路的酒店」，别设“连云港市”</b><em>下高速 3 公里就到，不用再往东跑。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d1c"><span class="box"></span><span class="tx"><b>路线：燕子矶长江隧道 → 浦仪公路 → G36 宁洛 → 六合南枢纽 → G2503 南京绕城（63 km）→ G25 长深 → 淮安南枢纽 →「苍梧」互通下</b><em>约 3.5–4 h。宁连高速淮安至连云港段已是双向八车道、限速 120，路很好走。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d1d"><span class="box"></span><span class="tx"><b>中途服务区补一次电（约 30 分钟），顺便吃饭</b><em>服务区排队超 30 分钟就立刻下高速——淮安市区桩很多，比干等快。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d1e"><span class="box"></span><span class="tx"><b>到店先插枪再休息</b></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d1f"><span class="box"></span><span class="tx"><b>17:00 出门逛盐河巷 / 海州古城</b><em>4–6 km、12 分钟，步行就能串完。虾婆饼、板浦凉粉、小鱼煎饼都在这圈。车停万达或古城外围停车场。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d1g"><span class="box"></span><span class="tx"><b>带外套</b><em>10/1 海陆风力较大、阵风 5–6 级，傍晚体感偏冷。今天也是全市出行最高峰日，市内 9–11 时、16–18 时车多。</em></span></label></li>
+      </ul>
+
+      <div class="dayh"><span class="n">D2</span><b>10/2 周五 · 连岛全天 + 西连岛日落</b><span class="km">往返约 90 km</span></div>
+      <div class="tl">
+        <span class="key"><b>7:00</b> 出发</span>
+        <span>7:50 连岛游客中心</span>
+        <span>大沙湾 → 栈道 2.5km → 苏马湾</span>
+        <span><b>17:00</b> 西连岛日落 + 赶海</span>
+        <span>18:30 墟沟吃海鲜</span>
+        <span>约 19:30 回苍梧</span>
+      </div>
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="d2a"><span class="box"></span><span class="tx"><b><span class="kbd warn">硬线</span>7:00 准时出发</b><em>往东北 40 km、约 50 分钟，走苍梧路 → 海连路 / G228，会经过市内早高峰路段，晚一小时出门可能多花一倍时间。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d2b"><span class="box"></span><span class="tx"><b>过 6.7 km 拦海西大堤上岛</b><em>免费通行，整段像开在海面上。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d2c"><span class="box"></span><span class="tx"><b>车停「连岛景区游客中心」停车场，换 20 元观光车</b><em>15–20 元/天。<b>私家车不能进景区内部</b>，一律停外围换乘。9 点后车位紧张，别停路边野车位。<b>节假日这停车场出车可能排 2–5 小时，早进早出。</b></em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d2d"><span class="box"></span><span class="tx"><b>大沙湾 → 2.5 km 滨海悬崖栈道 → 苏马湾</b><em>栈道单程约 1 小时，悬索桥、炮台、贝壳滩、海蚀礁石，是连岛最出片的一段。苏马湾 15:00 有孔雀放飞表演，人比大沙湾少。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d2e"><span class="box"></span><span class="tx"><b>17:00 前到西连岛看日落</b><em>导航设「全球海鲜直播基地」门口停车，或设「老障头」——西连岛后山下方，黑褐色礁石海岸，正西朝向，是连云港看日落最好的位置。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d2g"><span class="box"></span><span class="tx"><b>顺带赶海：西连岛渔村</b><em>不是热门景区，人少海货多，本地渔民常来。退潮能挖蛤蜊、翻石头找小螃蟹。码头也能买刚上岸的海鲜。出发前用「上货潮汐表」定准到场时间。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d2h"><span class="box"></span><span class="tx"><b>晚饭：墟沟海棠路市场自选 + 找店加工</b><em>下午 4 点后常有半价。加工费约清蒸 10 元/份、爆炒 15 元/份。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d2i"><span class="box"></span><span class="tx"><b>回店插枪</b><em>今天往返 90 km，酒店桩就够。</em></span></label></li>
+      </ul>
+
+      <div class="dayh"><span class="n">D3</span><b>10/3 周六 · 海上云台山 + 老街 + 羊山岛</b><span class="km">往返约 95 km</span></div>
+      <div class="tl">
+        <span class="key"><b>7:30</b> 出发</span>
+        <span>8:20 云台山 → 二桅尖</span>
+        <span>下山午饭 + 连云港老街</span>
+        <span>下午 羊山岛栈道</span>
+        <span><b>17:00</b> 羊山岛日落</span>
+        <span>高公岛 / 墟沟晚饭</span>
+        <span>约 20:30 回苍梧</span>
+      </div>
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="d3a"><span class="box"></span><span class="tx"><b>7:30 出发</b><em>28 km、约 35–45 分钟，走海连路 / G228，同样为了在 9 点前穿过早高峰。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d3b"><span class="box"></span><span class="tx"><b>导航设「海上云台山风景区游客服务中心」</b><em><span class="kbd bad">别设北门</span>北门要爬一大段台阶。山脚停车场车位少，尽量 8 点前到。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d3c"><span class="box"></span><span class="tx"><b>买门票 + 往返景交，坐车上云顶</b><em>盘山公路很长，景交必坐（往返约 40 元）。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d3d"><span class="box"></span><span class="tx"><b>云顶路线</b><em>海天一览 → 凌空踏浪吊桥 → 将军泉 → 云台神鹰 → 二桅尖观景台。一次看到大海、东方大港、连岛全景，全程约 1 小时。下山顺访法起寺（汉代古寺）。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d3e"><span class="box"></span><span class="tx"><b>午饭：连云港老街</b><em>下山后约 8 km、15 分钟，就在云台山隧道出口。民国中西合璧建筑群、果城里、老钟楼、废旧铁道。部分路段是步行街，车停指定停车场。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d3f"><span class="box"></span><span class="tx"><b>下午：羊山岛</b><em>往东约 11 km、过田湾跨海大桥。免费，24 小时开放，线上点一下预约。1.6 km 环岛滨海栈道，海蚀崖、老虎嘴岩洞、彩色挡浪堤、白色灯塔。岛内停车免费且带充电桩。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d3g"><span class="box"></span><span class="tx"><b>17:00 守羊山岛日落</b><em>灯塔、田湾跨海大桥、渔船构成剪影，是这趟最安静的一段。想赶海就在礁石区翻石头找小螃蟹、海螺、寄居蟹——先查潮汐。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d3h"><span class="box"></span><span class="tx"><b>晚饭：高公岛渔港或墟沟</b></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d3i"><span class="box"></span><span class="tx"><b>回苍梧约 55 分钟，夜路注意疲劳</b><em>今天回得最晚（约 20:30）。</em></span></label></li>
+      </ul>
+
+      <div class="dayh"><span class="n">D4</span><b>10/4 周日 · 花果山 + 渔湾</b><span class="km">往返约 50 km</span></div>
+      <div class="tl">
+        <span class="key"><b>6:40</b> 出发</span>
+        <span><b>7:00</b> 花果山（最早档）</span>
+        <span>约 11:30 下山午饭</span>
+        <span>14:00 渔湾</span>
+        <span>17:00 回苍梧 → 盐河巷晚饭</span>
+        <span class="key">把电充满</span>
+      </div>
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="d4a"><span class="box"></span><span class="tx"><b><span class="kbd warn">硬线</span>6:40 出发</b><em>只有 10 km、20 分钟——全程离住处最近的一站，这也是住苍梧最划算的一天。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d4b"><span class="box"></span><span class="tx"><b>7:00 前到「花果山南门游客中心」或「五圣广场停车场」</b><em>停车 15–20 元/天。山路不允许自驾上山，车停山下换景交（往返 50 元）。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d4c"><span class="box"></span><span class="tx"><b>刷本人身份证入园</b><em>国庆实名预约 + 分时限流，一人一证，约满即止。选最早的可约时段能避掉九成旅行团。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d4d"><span class="box"></span><span class="tx"><b>省力路线（4–5 h，不走回头路）</b><em>观光车直达玉女峰（624.4 m，江苏陆地最高峰，天气好能望见大海）→ 徒步下山经迎曙亭 → 水帘洞 → 七十二洞 → 怪石园 → 千年三元宫 → 九龙桥 → 观光车返。想更省力可坐新索道（九龙桥—水帘洞—玉女峰，单程 30 / 30 / 60 元）。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d4e"><span class="box"></span><span class="tx"><b>猴子区规矩：不手提零食、不投喂、不挑逗</b><em>山道、怪石园、三元宫周边野生猕猴集中，背包拉好、手机拿稳。水帘洞地面湿滑，穿防滑鞋。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d4f"><span class="box"></span><span class="tx"><b>14:00 渔湾风景区</b><em>40 元、约 18 km / 25 分钟。三龙潭与老龙潭瀑布落差 40 米，秋天溪谷层林染色，人明显比海边少——专门用来错峰的点。石头长满青苔，穿防滑溯溪鞋。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d4g"><span class="box"></span><span class="tx"><b>晚饭在盐河巷 / 海州古城</b><em>约 17 km、25 分钟回苍梧，就在住处旁边，不用再跑。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d4h"><span class="box"></span><span class="tx"><b>今晚必须把电充满</b><em>明天 321 km 返程。酒店桩不够就用万达 / 大学城周边的城区快充。</em></span></label></li>
+      </ul>
+
+      <div class="dayh"><span class="n">D5</span><b>10/5 周一 · 返程</b><span class="km">321 km</span></div>
+      <div class="tl">
+        <span class="key"><b>8:00 前</b>上高速</span>
+        <span>（或 14:00 后）</span>
+        <span>淮安 / 服务区休息补电</span>
+        <span>约 12:00 到家</span>
+      </div>
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="d5a"><span class="box"></span><span class="tx"><b>8:00 前或 14:00 后上高速</b><em>10/5 返程车流还在爬升，真正的高峰是 10/6 15:00 起、10/7 15:00–20:00 最集中——10/5 走正好整段避开。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d5b"><span class="box"></span><span class="tx"><b>从「苍梧」互通上 G25 长深</b><em>比从海边出发少跑约 30 km。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d5c"><span class="box"></span><span class="tx"><b>确认电量满再走</b><em>321 km 高速按 ×1.35 折算约 433 km 等效，占满电 460 km 的 94%。纸面刚到，堵车一直开空调就超了。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="d5d"><span class="box"></span><span class="tx"><b>中途在淮安或服务区休息 + 补一次电</b></span></label></li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ============ 5 方位与车程 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">5</span>
+      <span class="gtitle"><b>方位与车程</b><em>苍梧在西，好玩的大多在东北的海边——所以 D2、D3 要往东跑</em></span>
+      <span class="gcount"><b>0</b>/0</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <div style="background:#fbfdfe;border:1px solid var(--line);border-radius:10px;padding:12px 10px;margin-top:14px;">
+        <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="苍梧大本营到各景点方位与车程示意">
+          <defs>
+            <marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#9fc3d2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <text x="24" y="26" font-size="12.5" font-weight="600" fill="#1a6f8f">方位示意（非等比）· 弧线数字为单程车程</text>
+
+          <!-- 南京 -->
+          <rect x="22" y="228" width="104" height="44" rx="9" fill="#fff" stroke="#c3d0d9" stroke-width="1.2"/>
+          <text x="74" y="248" font-size="13.5" font-weight="700" fill="#41535f" text-anchor="middle">南京</text>
+          <text x="74" y="264" font-size="10.5" fill="#7c8b95" text-anchor="middle">起点 · 321 km</text>
+
+          <path d="M128,250 C160,250 168,232 188,224" fill="none" stroke="#9fc3d2" stroke-width="1.8" stroke-dasharray="6 5"/>
+          <text x="146" y="222" font-size="10.5" fill="#7c8b95">G25 长深</text>
+
+          <!-- 苍梧 -->
+          <rect x="190" y="196" width="132" height="50" rx="10" fill="#0d3b52"/>
+          <text x="256" y="216" font-size="13.5" font-weight="700" fill="#fff" text-anchor="middle">苍梧 · 大本营</text>
+          <text x="256" y="233" font-size="10.5" fill="#a9d3e2" text-anchor="middle">海州区 · 连住 4 晚</text>
+
+          <!-- 辐射线 -->
+          <path d="M322,214 L400,150" fill="none" stroke="#9fc3d2" stroke-width="1.6" marker-end="url(#a1)"/>
+          <path d="M322,222 L424,196" fill="none" stroke="#9fc3d2" stroke-width="1.6" marker-end="url(#a1)"/>
+          <path d="M322,206 L452,120" fill="none" stroke="#9fc3d2" stroke-width="1.6" marker-end="url(#a1)"/>
+          <path d="M322,200 L496,84" fill="none" stroke="#9fc3d2" stroke-width="1.6" marker-end="url(#a1)"/>
+          <path d="M322,196 L580,72" fill="none" stroke="#9fc3d2" stroke-width="1.6" marker-end="url(#a1)"/>
+          <path d="M322,238 L588,150" fill="none" stroke="#9fc3d2" stroke-width="1.6" marker-end="url(#a1)"/>
+          <path d="M296,246 L276,268" fill="none" stroke="#9fc3d2" stroke-width="1.6" marker-end="url(#a1)"/>
+
+          <!-- 节点 -->
+          <circle cx="414" cy="142" r="6" fill="#2f7d54"/>
+          <text x="426" y="140" font-size="12.5" font-weight="650" fill="#16232d">花果山 <tspan fill="#7c8b95" font-weight="400">10 km · 20 min</tspan></text>
+          <text x="426" y="156" font-size="10.5" fill="#7c8b95">最近的站 · D4 早场</text>
+
+          <circle cx="438" cy="200" r="6" fill="#2f7d54"/>
+          <text x="450" y="198" font-size="12.5" font-weight="650" fill="#16232d">渔湾 <tspan fill="#7c8b95" font-weight="400">18 km · 25 min</tspan></text>
+          <text x="450" y="214" font-size="10.5" fill="#7c8b95">D4 下午</text>
+
+          <circle cx="466" cy="112" r="6" fill="#1a6f8f"/>
+          <text x="478" y="110" font-size="12.5" font-weight="650" fill="#16232d">海上云台山 <tspan fill="#7c8b95" font-weight="400">28 km · 35–45 min</tspan></text>
+          <text x="478" y="126" font-size="10.5" fill="#7c8b95">D3 上午 · 别设北门</text>
+
+          <circle cx="510" cy="74" r="6" fill="#1a6f8f"/>
+          <text x="522" y="72" font-size="12.5" font-weight="650" fill="#16232d">连云港老街 <tspan fill="#7c8b95" font-weight="400">36 km</tspan></text>
+          <text x="522" y="88" font-size="10.5" fill="#7c8b95">D3 午饭</text>
+
+          <circle cx="592" cy="62" r="7" fill="#1a6f8f"/>
+          <text x="604" y="52" font-size="12.5" font-weight="650" fill="#16232d">连岛</text>
+          <text x="604" y="68" font-size="10.5" fill="#7c8b95">40 km · 50 min</text>
+          <text x="604" y="82" font-size="10.5" fill="#7c8b95">D2 全天 · 7:00 硬线</text>
+
+          <circle cx="600" cy="152" r="7" fill="#1a6f8f"/>
+          <text x="612" y="150" font-size="12.5" font-weight="650" fill="#16232d">羊山岛</text>
+          <text x="612" y="166" font-size="10.5" fill="#7c8b95">45 km · 55 min</text>
+          <text x="612" y="180" font-size="10.5" fill="#7c8b95">D3 日落</text>
+
+          <circle cx="272" cy="276" r="6" fill="#c07615"/>
+          <text x="286" y="280" font-size="12.5" font-weight="650" fill="#16232d">盐河巷 / 海州古城 <tspan fill="#7c8b95" font-weight="400">4–6 km · 12 min</tspan></text>
+
+          <text x="24" y="292" font-size="10.5" fill="#a9b6bf">虚线为示意，不代表实际道路走向。导航请直接搜索地点名称。</text>
+        </svg>
+      </div>
+
+      <table>
+        <thead><tr><th>段</th><th>里程</th><th>车程</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>南京 → 苍梧（酒店）</b></td><td class="num">321 km</td><td class="num">3.5 – 4 h</td><td>G36 宁洛 → G2503 南京绕城 → G25 长深 →「苍梧」互通下。<b>下高速 3 公里就到</b></td></tr>
+          <tr class="hl"><td><b>苍梧 → 连岛景区</b></td><td class="num">约 40 km</td><td class="num">50 min</td><td>过 6.7 km 拦海西大堤（免费）。<b>D2 往返约 90 km，是全程最累的一天</b></td></tr>
+          <tr><td>苍梧 → 海上云台山</td><td class="num">约 28 km</td><td class="num">35 – 45 min</td><td>走海连路 / G228，注意躲市内高峰</td></tr>
+          <tr><td>海上云台山 → 连云港老街</td><td class="num">约 8 km</td><td class="num">15 min</td><td>就在云台山隧道出口</td></tr>
+          <tr><td>老街 → 羊山岛</td><td class="num">约 11 km</td><td class="num">20 min</td><td>途经田湾跨海大桥</td></tr>
+          <tr><td>羊山岛 → 苍梧</td><td class="num">约 45 km</td><td class="num">55 min</td><td>日落后返程是夜路</td></tr>
+          <tr class="ok"><td><b>苍梧 → 花果山</b></td><td class="num">约 10 km</td><td class="num">20 min</td><td>离住处最近，所以排在需要早起的 D4</td></tr>
+          <tr><td>花果山 → 渔湾风景区</td><td class="num">约 18 km</td><td class="num">25 min</td><td>—</td></tr>
+          <tr><td>苍梧 → 盐河巷 / 海州古城</td><td class="num">4 – 6 km</td><td class="num">12 min</td><td>就在住处旁边，步行也能到</td></tr>
+        </tbody>
+      </table>
+      <div class="note tip"><b>为什么只有 D2、D3 要早起：</b>大本营在西，海边在东北，每天往返 90–95 km、1.5–2 小时在路上，还要穿苍梧路 / 海连路的早高峰。<b>所以 D2 的 7:00、D4 的 6:40 是硬线，不是建议。</b>反过来，D1 下高速 3 公里到店、D5 直接从苍梧上高速，各比住海边少跑约 30 km——一进一出，账是平的。</div>
+    </div>
+  </section>
+
+  <!-- ============ 6 别自驾进去 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">6</span>
+      <span class="gtitle"><b>这 4 个地方别自驾进去</b><em>不是“不好停”，是根本不让开进去</em></span>
+      <span class="gcount"><b>0</b>/0</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <table>
+        <thead><tr><th>地方</th><th>规则</th><th>正确做法</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>连岛</b></td><td><b>私家车不能进景区内部</b>（沙滩 / 栈道区域）</td><td>车停「连岛景区游客中心」停车场（15–20 元/天），换 20 元观光车进。<b>节假日出车可能排 2–5 小时</b>，早进早出</td></tr>
+          <tr><td><b>花果山</b></td><td>山路不允许自驾上山</td><td>车停「南门游客中心」或「五圣广场停车场」，换景交（往返 50 元）；也可坐新索道（单程 30–60 元）</td></tr>
+          <tr><td><b>海上云台山</b></td><td>盘山公路很长，景交必坐</td><td>导航设「海上云台山风景区游客服务中心」——<b>别设北门</b>。山脚停车场车位少，尽量 8 点前到</td></tr>
+          <tr><td><b>连云港老街</b></td><td>部分路段是步行街</td><td>车停指定停车场后步行进。老街就在云台山隧道出口东 400 m</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 7 限行易堵停车 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">7</span>
+      <span class="gtitle"><b>限行 · 易堵 · 停车</b><em>外地车基本不限，这一块可以放心</em></span>
+      <span class="gcount"><b>0</b>/0</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <div class="note ok"><b>好消息：外地车牌在连云港市区和所有景区都不限行</b>——不限号、不限时段、不用办通行证。全连云港跟乘用车有关的限制只有下面两条。</div>
+      <table>
+        <thead><tr><th>路段</th><th>限制</th><th>对你的影响</th></tr></thead>
+        <tbody>
+          <tr><td><b>通园路</b>（港城大道 ↔ 花果山大道段）</td><td>每天 07:30–08:30、17:30–18:30 禁客车通行</td><td><b>法定节假日除外，国庆不受限。</b>节后工作日走这条才要避开</td></tr>
+          <tr class="hl"><td><b>连云港石化产业基地</b></td><td>全天禁止客车通行</td><td><b>千万别往那边开</b>，导航也别搜“石化基地”这类地名</td></tr>
+          <tr><td>西双湖周边合围区</td><td>载货汽车全天限行、需通行证</td><td>只管货车，与你无关</td></tr>
+        </tbody>
+      </table>
+      <div class="note tip"><b>另一条“软”规则，可以放心用：</b>交警已明确，国庆等旅游高峰沿用“热门景区临时停靠以提醒引导为主、轻微外地车违法教育免罚”，并在连岛、花果山周边增设临时停车区和引导点位。<b>比平时好停。</b>但别理解成“可以随便停”——严管路段和主干道照贴。</div>
+
+      <div class="dayh"><b>易堵点（官方国庆研判）</b></div>
+      <div class="note warn"><b>高峰时段是每天 9:00–11:00 和 16:00–18:00</b>（全天呈“M”型）。<b>10/1 是整个假期出行最高峰日。</b></div>
+      <table>
+        <thead><tr><th>类型</th><th>路段</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>你每天都会经过</b></td><td>海州区：<b>苍梧路</b>（就是你的大本营）、<b>海连路</b>、新大街、巨龙路、人民路、解放路、通灌路、迎宾大道、盐河南路<br>连云区：<b>海棠路</b>、中山路、中华路</td></tr>
+          <tr><td><b>景区周边</b></td><td>海州区：<b>花果山、渔湾</b>、月牙岛、园博园、孔望山<br>连云区：<b>海上云台山、羊山岛、连岛</b></td></tr>
+          <tr><td><b>商圈周边</b></td><td>海州区：火车站、苏宁广场、万达广场、吾悦广场、<b>盐河巷、海州古城</b><br>连云区：嘉瑞宝商业广场、<b>海棠路农贸市场</b></td></tr>
+        </tbody>
+      </table>
+
+      <div class="dayh"><b>停车：海州区双节开放 5452 个免费车位</b></div>
+      <div class="note ok">33 处党政机关、企事业单位停车场向社会免费开放，其中<b>新能源车位 171 个</b>。部分新能源车位仅供新能源车停放——你正好是电车，属于受益方。</div>
+      <table>
+        <thead><tr><th>停车场</th><th>泊位</th><th>开放时间</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>连云港园博园 1 / 2 / 3 号停车场</b></td><td class="num">3358</td><td>以现场公示为准</td></tr>
+          <tr><td>月牙岛南岛停车场</td><td class="num">450</td><td class="num">6:00 – 19:30</td></tr>
+          <tr><td>海州区行政中心停车场</td><td class="num">205</td><td>以现场公示为准</td></tr>
+          <tr><td>连云港市博物馆</td><td class="num">200</td><td class="num">9:00 – 18:00</td></tr>
+          <tr><td>海州体育馆（橄榄球北侧）</td><td class="num">120</td><td>以现场公示为准</td></tr>
+          <tr><td>锦屏山森林公园（园林 / 陈庄）</td><td class="num">129 / 34</td><td>以现场公示为准</td></tr>
+          <tr><td>海州游泳馆地下停车场</td><td class="num">99</td><td>以现场公示为准</td></tr>
+          <tr><td>连云港市革命纪念馆</td><td class="num">82</td><td class="num">9:00 – 17:30</td></tr>
+          <tr><td>朐山书院 / 云水湾</td><td class="num">—</td><td class="num">8:30–18:00 / 8:00–18:00</td></tr>
+        </tbody>
+      </table>
+      <div class="note tip">免费开放期间要服从现场管理、规范停放。另外<b>连云港市博物馆周一闭馆</b>，进去需身份证预约。</div>
+    </div>
+  </section>
+
+  <!-- ============ 8 补能 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">8</span>
+      <span class="gtitle"><b>电车补能清单</b><em>满电 460 km · 江苏桩密，这条线不用为充电焦虑</em></span>
+      <span class="gcount"><b>0</b>/4</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="e1"><span class="box"></span><span class="tx"><b><span class="kbd bad">必做</span>出发前在家充满</b><em>321 km 一次跑完，中途至少要补一次电。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="e2"><span class="box"></span><span class="tx"><b>去程在淮安 / 沿途服务区补一次（约 30 分钟）</b><em>顺便吃饭。服务区排队超 30 分钟就下高速——淮安市区桩很多。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="e3"><span class="box"></span><span class="tx"><b>苍梧酒店（大本营）</b><em>首选酒店自带充电车位（苍梧路一带多家标注有桩 + 免费停车）。<b>4 晚都靠它——每天回店就插上</b>，D2、D3 跑完 90 km 也不用出去找桩。酒店桩不够时用万达 / 大学城周边的第三方快充。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="e8"><span class="box"></span><span class="tx"><b><span class="kbd bad">必做</span>D4 晚上充满</b><em>次日 321 km 返程，这是全程最不能省的一次充电。</em></span></label></li>
+      </ul>
+      <div class="note tip">
+        <b>三条铁律：</b>① 往返各 321 km 是最吃电的两段——按 321 × 1.35 = 433 km 等效，占满电 460 km 的 <b>94%</b>，两头都必须满电出发 + 中途补一次；② 市内每天跑 45–95 km（D2、D3 最远），<b>回酒店就插上，别攒到最后一天</b>；③ 10 月海边和山顶风大，开暖风 / 空调的实耗比平时高 10–15%，按 5% 余量留底。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9 装备 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">9</span>
+      <span class="gtitle"><b>装备打包</b><em>出门前一晚对一遍</em></span>
+      <span class="gcount"><b>0</b>/10</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="p1"><span class="box"></span><span class="tx"><b>随车 16A 便携充电线</b><em>酒店桩位被占时的应急手段，插普通插座慢充，带一根不占地。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p2"><span class="box"></span><span class="tx"><b>充电 App 与卡</b><em>国网「e 充电」、星星充电；部分桩要插卡。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p3"><span class="box"></span><span class="tx"><b>冲锋衣或薄外套</b><em>10/1–10/2 阵风 5–6 级，海边和山顶冷，早晚温差大。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p4"><span class="box"></span><span class="tx"><b>防晒霜</b><em>海上紫外线很强，<b>阴天也要涂</b>——海风一吹不觉得晒，半天下来就脱皮。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p5"><span class="box"></span><span class="tx"><b>防滑溯溪鞋</b><em>渔湾石头长满青苔，水帘洞地面湿滑。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p6"><span class="box"></span><span class="tx"><b>高腰雨鞋（赶海刚需）</b><em>连云港是“礁石 + 泥滩”混合型海岸，淤泥区不少，普通鞋进泥就废了。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p7"><span class="box"></span><span class="tx"><b>赶海工具</b><em>赶海耙 / 扁头小铁锹、有网眼的小筐、加厚手套、盐瓶。基础一套 60 元以内。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p8"><span class="box"></span><span class="tx"><b>身份证</b><em>花果山一人一证、刷本人身份证入园；市博物馆也需身份证预约。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p9"><span class="box"></span><span class="tx"><b>车辆检查</b><em>胎压、玻璃水、雨刮。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="p10"><span class="box"></span><span class="tx"><b>离线地图</b><em>海边和景区信号偶尔不稳。</em></span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 10 赶海 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">10</span>
+      <span class="gtitle"><b>赶海清单</b><em>平均潮差 3–4 米，大潮期 4.5 米以上 —— 华东第一梯队</em></span>
+      <span class="gcount"><b>0</b>/7</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="s1"><span class="box"></span><span class="tx"><b>查潮汐</b><em>微信小程序「上货潮汐表」→ 江苏 · 连云港港。备选：全球潮汐、潮汐表精灵，可交叉核对。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="s2"><span class="box"></span><span class="tx"><b>挑日子：农历初一、十五前后两三天是大潮期</b><em>收获最好；初八、廿三前后是小潮，会少很多。再挑“低潮时刻在白天”的日子。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="s3"><span class="box"></span><span class="tx"><b>掐时间：低潮前 1 小时到场，低潮后 1 小时是黄金窗口</b><em>连云港属不规则半日潮，一天两涨两落，两次低潮深度不一样——挑对日子收获能差好几倍。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="s4"><span class="box"></span><span class="tx"><b><span class="kbd bad">红线</span>低潮过后 1 小时内必须撤离礁石平台区</b><em>连云港礁石平台地形复杂，涨潮时某些区域会被快速围困。提前在手机上设好涨潮提醒。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="s5"><span class="box"></span><span class="tx"><b>选点</b><em><b>羊山岛</b>——礁石区，翻石头找小螃蟹、海螺、寄居蟹，免费好停车；<b>西连岛渔村</b>——本地渔民常来，D2 顺路，退潮能挖蛤蜊。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="s6"><span class="box"></span><span class="tx"><b>三个口诀</b><em><b>花蛤靠“筛”</b>：看沙面小孔或冒泡处，耙子平刮 5–10 cm，铲进网眼筐在海水里一晃；<b>蛏子靠“盐”</b>：挖掉表面泥沙看到椭圆双孔就撒盐，等 1–2 分钟自己钻出来；<b>螃蟹靠“翻”</b>：找到积水坑就翻石头，从背面捏住蟹壳两侧。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="s7"><span class="box"></span><span class="tx"><b>看一遍安全与文明两条</b><em>见下面两个框，尤其是“风力超 4 级取消礁石区行程”和“织纹螺有毒”。</em></span></label></li>
+      </ul>
+      <div class="split">
+        <div class="col no">
+          <h4>安全红线</h4>
+          <ul>
+            <li><b>淤泥陷脚</b>：陷进去不要猛拔，慢慢把脚拔出，或趴下分散体重</li>
+            <li><b>涨潮围困</b>：严格执行“低潮后 1 小时内撤离礁石区”，别贪海货</li>
+            <li><b>礁石湿滑</b>：严禁拖鞋、凉鞋、光脚；不攀爬高礁石；<b>风力超 4 级取消礁石区行程</b></li>
+            <li><b>织纹螺有毒，切勿食用</b>；不认识的海货先问当地人</li>
+            <li>避开军事管制区与生态保护红线，不进不明滩涂</li>
+          </ul>
+        </div>
+        <div class="col yes">
+          <h4>文明赶海</h4>
+          <ul>
+            <li>只捡成体（花蛤壳长 3 cm 以上、贻贝 4 cm 以上），<b>幼崽放回</b></li>
+            <li>翻过的石头<b>翻回原位</b>，礁石下的生态很脆弱</li>
+            <li>带走所有垃圾，包括别人留下的</li>
+            <li>野生海参请勿采捕，看看就好</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 景点速查 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">11</span>
+      <span class="gtitle"><b>景点速查：门票 · 时长 · 一点提醒</b><em>价格是 2026 年 9 月口径，以现场为准</em></span>
+      <span class="gcount"><b>0</b>/0</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <table>
+        <thead><tr><th>景点</th><th>门票（元）</th><th>时长</th><th>关键提示</th></tr></thead>
+        <tbody>
+          <tr><td><b>连岛</b><br><span style="font-size:12.5px;color:#7c8b95">大沙湾 + 苏马湾 + 滨海栈道</span></td><td class="num">50（线上 45）<br>+ 观光车 20 必买</td><td class="num">半天 – 1 天</td><td>8:30–17:30（17:00 停止入园）；需预约购票并选到达时段；私家车不能进景区内部，停游客中心换观光车</td></tr>
+          <tr><td><b>花果山</b>（5A）</td><td class="num">90（线上 85）<br>景交往返 50</td><td class="num">4 – 5 h</td><td>7:00–18:00；国庆实名预约 + 分时限流、约满即止；车停山下换景交；猴子会抢包</td></tr>
+          <tr><td><b>海上云台山</b></td><td class="num">60 – 80<br>含往返景交 95 – 120</td><td class="num">2 – 3 h</td><td>8:30–17:30；别走北门；<b>阴雨天别去</b>，大雾什么都看不到</td></tr>
+          <tr><td><b>渔湾风景区</b></td><td class="num">40</td><td class="num">2 – 3 h</td><td>石头长满青苔，穿防滑溯溪鞋；秋季溪谷层林染色，人少</td></tr>
+          <tr class="ok"><td><b>羊山岛</b></td><td class="num">免费</td><td class="num">2 – 3 h</td><td>24 小时开放；无大片沙滩、<b>不能游泳</b>；礁石锋利，穿防滑鞋 + 戴手套</td></tr>
+          <tr class="ok"><td><b>连云港老街</b></td><td class="num">免费</td><td class="num">2 h</td><td>民国石砌建筑群、钟楼、铁道；傍晚氛围最好</td></tr>
+          <tr class="ok"><td><b>盐河巷 · 海州古城</b></td><td class="num">免费</td><td class="num">2 h</td><td>小吃夜市，晚上逛；虾婆饼、板浦凉粉、小鱼煎饼、灌云豆丹</td></tr>
+          <tr class="ok"><td><b>在海一方公园</b></td><td class="num">免费</td><td class="num">1 h</td><td>内海、无安全防护，<b>严禁下海游泳</b>，只能岸边踏浪；16:00–18:00 日落</td></tr>
+          <tr class="ok"><td><b>西连岛渔村 · 老障头</b></td><td class="num">免费</td><td class="num">1 – 2 h</td><td>老障头是看日落最好的位置；可串 老障头 → 西连岛灯塔 → 小西山渔村</td></tr>
+        </tbody>
+      </table>
+      <div class="note bad"><b>已排除：秦山岛。</b>每天只有一班船、班次还不固定，岛上无淡水补给——国庆别去，风险太高。</div>
+    </div>
+  </section>
+
+  <!-- ============ 12 吃 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">12</span>
+      <span class="gtitle"><b>吃海鲜：买 · 加工 · 避坑</b><em>10 月正是最肥的时候，别在景区吃</em></span>
+      <span class="gcount"><b>0</b>/0</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <div class="split">
+        <div class="col yes">
+          <h4>正确做法</h4>
+          <ul>
+            <li><b>海棠路市场</b>——本地人采购的地方，<b>下午 4 点后常有半价</b></li>
+            <li><b>高公岛渔港</b>——刚靠岸的渔船，带瓶 500 ml 水验秤</li>
+            <li><b>西连岛渔村码头</b>——赶海顺路，货最新鲜</li>
+            <li><b>墟沟海鲜美食城</b>自选 + 加工（军民海鲜楼、红名海鲜馆 369 是本地人常去的）</li>
+            <li><b>嘉瑞宝广场周边</b>找店加工，加工费约 <b>清蒸 10 元/份、爆炒 15 元/份</b></li>
+          </ul>
+        </div>
+        <div class="col no">
+          <h4>要避开</h4>
+          <ul>
+            <li><b>景区门口的大排档</b>——价格虚高</li>
+            <li>点菜一定<b>看清单价</b>，警惕“时价”陷阱</li>
+            <li>连岛景区内餐饮偏贵，回墟沟吃</li>
+            <li><b>不新鲜的贝类果断丢</b>，贝类清水养 2 小时吐沙再烹</li>
+            <li>车站兜售的“低价一日游”基本都是购物团</li>
+          </ul>
+        </div>
+      </div>
+      <div class="chips" style="margin-top:14px;">
+        <span class="hot">清蒸梭子蟹</span><span class="hot">椒盐皮皮虾</span><span class="hot">海肠捞饭</span>
+        <span class="hot">沙光鱼汤</span><span class="hot">鲅鱼水饺</span><span class="hot">蒜蓉生蚝</span>
+        <span class="hot">梭子蟹炒年糕</span>
+        <span>小鱼煎饼</span><span>板浦凉粉</span><span>虾婆饼</span><span>灌云豆丹</span><span>海鲜面 / 海菜包子</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 安全 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">13</span>
+      <span class="gtitle"><b>单人自驾安全红线</b><em>一个人开，这些别省</em></span>
+      <span class="gcount"><b>0</b>/11</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <ul class="list">
+        <li class="ck"><label><input type="checkbox" data-id="sf1"><span class="box"></span><span class="tx"><b>每 2 小时休息 20 分钟</b><em>别用意志力硬撑。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf2"><span class="box"></span><span class="tx"><b>往返两头都满电出发</b><em>不留余量赌。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf3"><span class="box"></span><span class="tx"><b>回酒店就插上电</b><em>别攒到最后一天。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf4"><span class="box"></span><span class="tx"><b>低潮后 1 小时内必须撤离礁石区</b></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf5"><span class="box"></span><span class="tx"><b>风力超 4 级，取消礁石区赶海</b></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf6"><span class="box"></span><span class="tx"><b>赶海穿高腰雨鞋 + 防滑鞋</b><em>不穿拖鞋、凉鞋、光脚。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf7"><span class="box"></span><span class="tx"><b>手机充满电，提前设好涨潮提醒</b></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf8"><span class="box"></span><span class="tx"><b>18:00 前离开礁石区，夜间不走海边</b></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf9"><span class="box"></span><span class="tx"><b>严禁下海游泳</b><em>在海一方（内海、无安全防护）和羊山岛（无沙滩）都不行，只能岸边踏浪。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf10"><span class="box"></span><span class="tx"><b>别停路边野车位</b><em>容易被贴条。宁可贵几块钱进正规停车场。</em></span></label></li>
+        <li class="ck"><label><input type="checkbox" data-id="sf11"><span class="box"></span><span class="tx"><b>桥面与海边阵风时降速</b><em>10/1–10/2 阵风 5–6 级，西大堤、田湾跨海大桥这些开阔路段双手握稳。</em></span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 14 天气 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">14</span>
+      <span class="gtitle"><b>天气与相应安排</b><em>10/1 起转晴，这是这条线最大的运气</em></span>
+      <span class="gcount"><b>0</b>/0</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <table>
+        <thead><tr><th>日期</th><th>天气</th><th>气温</th><th>安排</th></tr></thead>
+        <tbody>
+          <tr><td class="num">9/30</td><td>多云</td><td class="num">18 – 27℃</td><td><span class="tag warn">东到东北风 4 级</span></td></tr>
+          <tr class="warn"><td class="num">10/1</td><td>多云到晴</td><td class="num">14 – 21℃</td><td><span class="tag warn">海陆风力较大，阵风 5–6 级</span> 赶路日</td></tr>
+          <tr class="ok"><td class="num">10/2</td><td><b>晴到多云</b></td><td class="num">14 – 23℃</td><td><b>最佳，留给连岛</b>（海水蓝不蓝全看天气）</td></tr>
+          <tr><td class="num">10/3</td><td>多云</td><td class="num">15 – 23℃</td><td>适合海上云台山（多云不挡视野）</td></tr>
+          <tr class="ok"><td class="num">10/4</td><td><b>晴到多云</b></td><td class="num">18 – 24℃</td><td><b>留给花果山</b>（山顶视野好）</td></tr>
+          <tr><td class="num">10/5</td><td>阴</td><td class="num">16 – 24℃</td><td>适合返程</td></tr>
+          <tr><td class="num">10/6</td><td>多云</td><td class="num">19 – 25℃</td><td><span class="tag warn">返程车流开始升温</span></td></tr>
+          <tr class="hl"><td class="num">10/7</td><td>晴</td><td class="num">17 – 28℃</td><td><span class="tag bad">返程最高峰，别用来赶路</span></td></tr>
+        </tbody>
+      </table>
+      <div class="note tip"><b>三件事：</b>① <b>连云港的海好不好看全看天气</b>——阴天去连岛会失望，晴天海水才蓝，所以连岛排在预报最晴的 10/2、花果山排在 10/4；② <b>10/1–10/2 海陆风大、阵风 5–6 级</b>，海边和山顶要带薄防风外套，傍晚别在礁石区久留；③ <b>10/2 早晨最低只有 14℃</b>，是全程最冷的早晨，7:00 出门记得加件外套。</div>
+      <div class="note warn"><b>还有一条容易被忽略：海上紫外线很强，阴天也要涂防晒。</b>海风一吹不觉得晒，半天下来就脱皮了。</div>
+    </div>
+  </section>
+
+  <!-- ============ 15 费用 ============ -->
+  <section class="group" data-g>
+    <button class="ghead" aria-expanded="true">
+      <span class="gnum">15</span>
+      <span class="gtitle"><b>费用预估（单人）</b><em>国庆高速免费，这一项省约 290 元</em></span>
+      <span class="gcount"><b>0</b>/0</span>
+      <span class="chev"></span>
+    </button>
+    <div class="gbody">
+      <div class="kpi">
+        <div><span>电费（约 880 km）</span><b>130 – 260</b></div>
+        <div><span>住宿（4 晚 · 苍梧）</span><b>1,200 – 2,200</b></div>
+        <div><span>门票</span><b>250 – 420</b></div>
+        <div><span>吃（海鲜为主）</span><b>700 – 1,200</b></div>
+        <div><span>停车 / 杂费</span><b>100 – 180</b></div>
+        <div><span>高速过路费</span><b>0</b></div>
+      </div>
+      <div class="total"><span>合计（不含购物）</span><b>2,400 – 4,300 元</b></div>
+      <p style="margin:14px 0 0;font-size:13px;color:var(--muted);line-height:1.85;">
+        <b>住宿是唯一的浮动大项</b>：4 晚统一住苍梧（商务区，供应量大、国庆涨幅小），比挤海边海景房省 300–400 元。里程因为 D2、D3 往海边往返从 760 km 升到约 880 km，电费多约 20–30 元——用这点电费换“4 晚不换店”，是划算的。<br>
+        门票参考：花果山 90（线上 85）、连岛 50 + 观光车 20、海上云台山 60–80 + 景交、渔湾 40。<br>
+        <b>免费的一大堆</b>：羊山岛、连云港老街、盐河巷、海州古城、在海一方公园、西连岛渔村、老障头、高公岛 —— 门票压力很小。
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    数据口径：2026 年 9 月 27 – 28 日核实<br>
+    里程与路线 · 腾讯地图路径规划｜天气 · 连云港市气象台 / 江苏气象｜客流与停车 · 连云港市公路部门、市公安局交警支队公开答复<br>
+    门票、车程、充电桩与潮汐信息随季节与运营方调整，出发前请再核对一次景区公众号与「上货潮汐表」。<br>
+    <span style="color:#a9b6bf;">勾选状态保存在本机浏览器，不会上传。页脚含本地存储开关（localStorage），若用无痕模式浏览，刷新后会清空。</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY = 'lyg-trip-checklist-v1';
+  var store = {};
+  try { var raw = localStorage.getItem(KEY); if (raw) store = JSON.parse(raw) || {}; } catch (e) { store = {}; }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+
+  var boxes  = Array.prototype.slice.call(document.querySelectorAll('.ck input[type=checkbox]'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.group[data-g]'));
+  var pbar   = document.getElementById('pbar');
+  var ptx    = document.getElementById('ptx');
+  var curFilter = 'all';
+
+  boxes.forEach(function(b){
+    var id = b.getAttribute('data-id');
+    if (store[id]) b.checked = true;
+    b.addEventListener('change', function(){
+      if (b.checked) { store[id] = true; } else { delete store[id]; }
+      save(); render();
+    });
+  });
+
+  function render(){
+    var done = 0;
+    boxes.forEach(function(b){
+      var li = b.closest('.ck');
+      if (b.checked) { done++; li.classList.add('done'); } else { li.classList.remove('done'); }
+    });
+
+    var total = boxes.length;
+    var pct = total ? Math.round(done / total * 100) : 0;
+    if (pbar) pbar.style.width = pct + '%';
+    if (ptx)  ptx.textContent = done + ' / ' + total + '  ·  ' + pct + '%';
+
+    groups.forEach(function(g){
+      var bs = Array.prototype.slice.call(g.querySelectorAll('.ck input'));
+      var d = bs.filter(function(x){ return x.checked; }).length;
+      var cEl = g.querySelector('.gcount');
+      var cB  = g.querySelector('.gcount b');
+      if (cEl) cEl.style.display = bs.length ? '' : 'none';
+      if (cB)  cB.textContent = d;
+      g.classList.toggle('all-done', bs.length > 0 && d === bs.length);
+
+      var hide = false;
+      if (bs.length && curFilter !== 'all') {
+        var vis = bs.filter(function(x){
+          var isDone = x.closest('.ck').classList.contains('done');
+          return curFilter === 'todo' ? !isDone : isDone;
+        });
+        hide = vis.length === 0;
+      }
+      g.classList.toggle('g-hide', hide);
+    });
+  }
+
+  document.querySelectorAll('#seg button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('#seg button').forEach(function(x){ x.classList.remove('on'); });
+      btn.classList.add('on');
+      curFilter = btn.getAttribute('data-f');
+      document.body.className = curFilter === 'all' ? '' : ('f-' + curFilter);
+      render();
+    });
+  });
+
+  groups.forEach(function(g){
+    var h = g.querySelector('.ghead');
+    h.addEventListener('click', function(){
+      g.classList.toggle('collapsed');
+      h.setAttribute('aria-expanded', String(!g.classList.contains('collapsed')));
+    });
+  });
+
+  var btnToggle = document.getElementById('btnToggle');
+  var allCollapsed = false;
+  btnToggle.addEventListener('click', function(){
+    allCollapsed = !allCollapsed;
+    groups.forEach(function(g){
+      if (g.classList.contains('g-hide')) return;
+      g.classList.toggle('collapsed', allCollapsed);
+      g.querySelector('.ghead').setAttribute('aria-expanded', String(!allCollapsed));
+    });
+    btnToggle.textContent = allCollapsed ? '全部展开' : '全部折叠';
+  });
+
+  var btnReset = document.getElementById('btnReset');
+  var armed = false, timer = null;
+  btnReset.addEventListener('click', function(){
+    if (!armed) {
+      armed = true;
+      btnReset.textContent = '确认重置';
+      btnReset.style.color = '#b5302b';
+      btnReset.style.borderColor = '#e6b5b2';
+      timer = setTimeout(function(){
+        armed = false; btnReset.textContent = '重置';
+        btnReset.style.color = ''; btnReset.style.borderColor = '';
+      }, 3000);
+      return;
+    }
+    clearTimeout(timer);
+    boxes.forEach(function(b){ b.checked = false; });
+    store = {}; save();
+    armed = false; btnReset.textContent = '重置';
+    btnReset.style.color = ''; btnReset.style.borderColor = '';
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
